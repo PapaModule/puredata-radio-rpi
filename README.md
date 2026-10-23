@@ -42,7 +42,7 @@ Skrypt:
 
 - Port: 8000
 - Mount: /radio
-- Hasło źródła: radio123
+- Hasło źródła: przez zmienną `ICECAST_SOURCE_PASSWORD` (nie w repo!)
 - URL strumienia: http://patchbox.local:8000/radio
 
 ## Pliki

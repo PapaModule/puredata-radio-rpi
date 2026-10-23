@@ -1,6 +1,8 @@
 # Icecast — notatka konfiguracyjna
 
-Usługa Icecast musi działać na `localhost:8000` z mountem `/radio` i hasłem źródła `radio123`.
+Usługa Icecast musi działać na `localhost:8000` z mountem `/radio`.
+
+Hasło źródła **nie jest przechowywane w repozytorium**. Ustaw je przez zmienną środowiskową `ICECAST_SOURCE_PASSWORD` przed uruchomieniem `radio-szum.sh`.
 
 URL strumienia: http://patchbox.local:8000/radio
 

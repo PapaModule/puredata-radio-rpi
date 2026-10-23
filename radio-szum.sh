@@ -4,7 +4,16 @@
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PATCH="$SCRIPT_DIR/patches/szum-morza.pd"
-ICE=icecast://source:radio123@localhost:8000/radio
+
+# Hasło źródła Icecast — podaj przez zmienną środowiskową, np.:
+#   export ICECAST_SOURCE_PASSWORD=twoje_haslo
+# Nie trzymaj prawdziwego hasła w tym pliku!
+ICECAST_SOURCE_PASSWORD="${ICECAST_SOURCE_PASSWORD:-TU_WPISZ_HASLO}"
+if [ "$ICECAST_SOURCE_PASSWORD" = "TU_WPISZ_HASLO" ]; then
+    echo "BŁĄD: ustaw zmienną ICECAST_SOURCE_PASSWORD przed uruchomieniem" >&2
+    exit 1
+fi
+ICE=icecast://source:${ICECAST_SOURCE_PASSWORD}@localhost:8000/radio
 
 # Czekaj na serwer JACK (systemowy jack.service) i Icecast
 for i in $(seq 1 60); do

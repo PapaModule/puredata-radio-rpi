@@ -100,8 +100,8 @@ jack_connect pd_radio:output_2 pd_stream:input_2
 
 - Port: 8000
 - Mount: /radio
-- Source password: radio123
-- URL streamu: http://patchbox.local:8000/radio
+- Hasło źródła: **nie trzymaj w pliku!** Ustaw zmienną środowiskową `ICECAST_SOURCE_PASSWORD` przed uruchomieniem `radio-szum.sh`.
+- URL strumienia: http://patchbox.local:8000/radio
 
 ## Skala E minor (MIDI)
 
