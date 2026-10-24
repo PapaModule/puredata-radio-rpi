@@ -2,8 +2,8 @@
 #X text 20 10 Szum morza: 2x noise~ -> LP24 (2x vcf~) z LFO na cutoff -> s-jonverb~ hall (dlugi decay, lekki diffusion);
 #X obj 40 50 noise~;
 #X obj 160 50 noise~;
-#X obj 40 80 *~ 2.5;
-#X obj 160 80 *~ 2.5;
+#X obj 40 80 *~ 0.5;
+#X obj 160 80 *~ 0.5;
 #X obj 400 50 osc~ 0.08;
 #X obj 400 80 *~ 0.5;
 #X obj 400 110 +~ 0.5;
