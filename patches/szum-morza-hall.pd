@@ -10,10 +10,10 @@
 #X obj 400 140 *~;
 #X obj 400 170 *~ 1800;
 #X obj 400 200 +~ 250;
-#X obj 40 230 vcf~ 0.7;
-#X obj 40 260 vcf~ 0.7;
-#X obj 160 230 vcf~ 0.7;
-#X obj 160 260 vcf~ 0.7;
+#X obj 40 230 vcf~ 0.9;
+#X obj 40 260 vcf~ 0.9;
+#X obj 160 230 vcf~ 0.9;
+#X obj 160 260 vcf~ 0.9;
 #X obj 40 330 *~ 0.5;
 #X obj 160 330 *~ 0.5;
 #X obj 300 300 s-jonverb~;
