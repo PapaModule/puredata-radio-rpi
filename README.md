@@ -4,7 +4,7 @@ Generatywne radio Pure Data na Raspberry Pi z PatchBox OS, kartą dźwiękową P
 
 ## Co gra
 
-Patch `patches/szum-morza.pd` — szum morza: 2× `noise~` → filtr LP24 (2× `vcf~`) z LFO na cutoff → `rev3~` (reverb 50/50) → `dac~`. Dźwięk idzie jednocześnie na wyjście Pisound (JACK) i do strumienia Icecast.
+Patch `patches/szum-morza-hall.pd` — szum morza: 2× `noise~` → filtr LP24 (2× `vcf~`) z LFO na cutoff → `s-jonverb~` (hall-style reverb, długi decay, lekki diffusion) → `dac~`. Dźwięk idzie jednocześnie na wyjście Pisound (JACK) i do strumienia Icecast.
 
 ## Wymagania
 
@@ -24,7 +24,7 @@ chmod +x radio-szum.sh
 
 Skrypt:
 1. Czeka na JACK (`system:playback_1`) i Icecast (`localhost:8000`)
-2. Uruchamia PD w trybie `-nogui -rt -jack -jackname pd_radio -send "pd dsp 1"` z patchu `patches/szum-morza.pd`
+2. Uruchamia PD w trybie `-nogui -rt -jack -jackname pd_radio -send "pd dsp 1" -path /home/dan/pd-scripts/TR8/garagebeat` z patchu `patches/szum-morza-hall.pd`
 3. Uruchamia ffmpeg odczytujący z JACK (`pd_stream`), kodujący MP3 192k do Icecast
 4. Podłącza porty JACK: `pd_radio:output_1/2` → `pd_stream:input_1/2`
 5. Czeka (`wait -n`) — gdy PD lub ffmpeg padnie, skrypt kończy się z kodem 1 (systemd --user restartuje)
@@ -48,5 +48,6 @@ Skrypt:
 ## Pliki
 
 - `radio-szum.sh` — skrypt startowy (systemd --user)
-- `patches/szum-morza.pd` — patch PD (szum morza)
+- `patches/szum-morza.pd` — oryginalny patch PD (szum morza, rev3~)
+- `patches/szum-morza-hall.pd` — patch PD z hall-style reverbem (s-jonverb~)
 - `docs/PD_RADIO_INSTRUKCJE.md` — pełna instrukcja uruchomienia
