@@ -1,5 +1,5 @@
 #N canvas 0 0 800 500 10;
-#X text 20 10 Szum morza + bas arpeggio E minor 111 BPM (mono) -> s-jonverb~ hall;
+#X text 20 10 Szum morza + bas E2 111 BPM (mono) -> s-jonverb~ hall;
 #X obj 40 50 noise~;
 #X obj 40 80 *~ 0.5;
 #X obj 40 230 vcf~ 1000 0.9;
@@ -8,66 +8,36 @@
 #X obj 40 380 send~ szum;
 
 #X obj 160 50 metro 270;
-#X obj 160 80 b;
-#X obj 160 110 random 7;
-#X obj 160 140 sel 0 1 2 3 4 5 6;
-#X obj 40 180 float 52;
-#X obj 80 180 float 54;
-#X obj 120 180 float 55;
-#X obj 160 180 float 57;
-#X obj 200 180 float 59;
-#X obj 240 180 float 60;
-#X obj 280 180 float 62;
-#X obj 320 180 mtof;
-#X obj 320 220 sig~;
-#X obj 320 260 osc~;
-#X obj 40 220 msg 1, 0 200;
-#X obj 80 220 line~;
-#X obj 120 220 *~;
-#X obj 160 220 *~ 0.5;
-#X obj 160 280 send~ bas;
+#X obj 160 80 msg 1, 0 200;
+#X obj 160 120 line~;
+#X obj 160 160 osc~ 82.41;
+#X obj 160 200 *~;
+#X obj 160 240 *~ 0.5;
 
 #X obj 280 50 receive~ szum;
-#X obj 280 80 receive~ bas;
-#X obj 280 110 +~;
-#X obj 280 150 s-jonverb~;
+#X obj 280 80 +~;
+#X obj 280 120 s-jonverb~;
 
 #X obj 400 50 *~ 0.5;
 #X obj 400 80 dac~;
 
-#X connect 0 0 1 0;
-#X connect 1 0 2 0;
 #X connect 2 0 3 0;
 #X connect 3 0 4 0;
 #X connect 4 0 5 0;
-
+#X connect 5 0 6 0;
 #X connect 6 0 7 0;
-#X connect 7 0 8 0;
+
 #X connect 8 0 9 0;
 #X connect 9 0 10 0;
-#X connect 9 1 11 0;
-#X connect 9 2 12 0;
-#X connect 9 3 13 0;
-#X connect 9 4 14 0;
-#X connect 9 5 15 0;
-#X connect 9 6 16 0;
-#X connect 10 0 17 0;
-#X connect 11 0 17 0;
-#X connect 12 0 17 0;
-#X connect 13 0 17 0;
-#X connect 14 0 17 0;
-#X connect 15 0 17 0;
-#X connect 16 0 17 0;
-#X connect 17 0 18 0;
-#X connect 18 0 19 0;
-#X connect 7 0 20 0;
+#X connect 10 0 11 1;
+#X connect 11 0 12 0;
+#X connect 11 1 13 0;
+#X connect 12 0 13 1;
+#X connect 13 0 14 0;
+
+#X connect 17 0 19 0;
+#X connect 18 0 19 1;
+#X connect 19 0 20 0;
+
 #X connect 20 0 21 0;
 #X connect 21 0 22 0;
-#X connect 19 0 22 1;
-#X connect 22 0 23 0;
-
-#X connect 28 0 30 0;
-#X connect 29 0 30 1;
-#X connect 30 0 31 0;
-
-#X connect 31 0 32 0;
