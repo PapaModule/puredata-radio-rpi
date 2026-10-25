@@ -1,7 +1,7 @@
 #!/bin/bash
 # Radio „szum”: Pd (noise~) -> JACK -> ffmpeg -> Icecast :8000/radio
 # Uruchamiane przez systemd --user (radio-szum.service).
-PATCH=/home/dan/radio/szum-morza-hall.pd
+PATCH=/home/dan/radio/szum-morza-bas.pd
 ICE=icecast://source:radio123@localhost:8000/radio
 
 # Czekaj na serwer JACK (systemowy jack.service) i Icecast
