@@ -54,7 +54,7 @@ case "$cmd" in
         tr '\0' ' ' < /proc/$P/cmdline 2>/dev/null | grep -q "jackname test_" && kill "$P" 2>/dev/null && echo "zabito test pd PID $P"
     done
     for P in $(pgrep -x ffmpeg); do
-        tr '\0' ' ' < /proc/$P/cmdline 2>/dev/null | grep -q "8001/test" && kill "$P" 2>/dev/null && echo "zabito test ffmpeg PID $P"
+        tr '\0' ' ' < /proc/$P/cmdline 2>/dev/null | grep -q "8001/test " && kill "$P" 2>/dev/null && echo "zabito test ffmpeg PID $P"
     done
     ;;
   status)

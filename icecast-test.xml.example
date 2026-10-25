@@ -42,5 +42,11 @@
   <mount>
     <mount-name>/test</mount-name>
     <charset>UTF-8</charset>
+    <fallback-mount>/test-idle</fallback-mount>
+    <fallback-override>1</fallback-override>
+  </mount>
+  <mount>
+    <mount-name>/test-idle</mount-name>
+    <charset>UTF-8</charset>
   </mount>
 </icecast>
