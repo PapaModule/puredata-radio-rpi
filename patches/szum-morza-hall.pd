@@ -1,20 +1,20 @@
 #N canvas 0 0 800 500 10;
-#X text 20 10 Szum morza + bas E2 111 BPM (mono) -> s-jonverb~ hall;
+#X text 20 10 Szum morza + bas E2 111 BPM (mono) -> rev3~ hall;
 #X obj 40 50 noise~;
-#X obj 40 80 *~ 0.5;
+#X obj 40 80 *~ 1.0;
 #X obj 40 230 vcf~ 1000 0.9;
 #X obj 40 260 vcf~ 1000 0.9;
-#X obj 40 330 *~ 0.5;
+#X obj 40 330 *~ 0.8;
 #X obj 200 50 metro 270;
 #X obj 200 90 msg 1, 0 200;
 #X obj 200 130 line~;
 #X obj 200 170 osc~ 82.41;
 #X obj 200 170 *~;
-#X obj 200 210 *~ 0.5;
+#X obj 200 210 *~ 1.0;
 #X obj 360 330 +~;
 #X obj 360 370 rev3~ 80 98 2000 70;
-#X obj 520 330 *~ 0.5;
-#X obj 520 370 *~ 0.5;
+#X obj 520 330 *~ 0.8;
+#X obj 520 370 *~ 0.8;
 #X obj 520 410 dac~;
 
 #X connect 1 0 2 0;
