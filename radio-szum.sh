@@ -1,7 +1,7 @@
 #!/bin/bash
 # Radio „szum”: Pd (noise~) -> JACK -> ffmpeg -> Icecast :8000/radio
 # Uruchamiane przez systemd --user (radio-szum.service).
-PATCH=/home/dan/radio/szum-morza-hall.pd
+PATCH=/home/dan/radio/szum-morza-bas.pd
 ICE=icecast://source:radio123@localhost:8000/radio
 
 # Czekaj na serwer JACK (systemowy jack.service) i Icecast
@@ -10,8 +10,12 @@ for i in $(seq 1 60); do
     sleep 2
 done
 
+# Zabij Pd z tą samą nazwą JACK uruchomione poza usługą: inaczej nasze Pd dostaje
+# nazwę pd_radio-01, a jack_connect poniżej podłącza do streamu cudzą instancję
+pkill -f -- "-jackname pd_radio" 2>/dev/null && sleep 1
+
 trap "kill 0" EXIT
-pd -nogui -rt -jack -jackname pd_radio -send "pd dsp 1" -path /home/dan/pd-scripts/TR8/garagebeat "$PATCH" &
+pd -nogui -rt -jack -jackname pd_radio -send "pd dsp 1" "$PATCH" &
 sleep 4
 ffmpeg -nostdin -loglevel warning -f jack -i pd_stream -acodec libmp3lame -ab 192k \
        -content_type audio/mpeg -f mp3 "$ICE" &
