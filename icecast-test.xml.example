@@ -1,0 +1,46 @@
+<icecast>
+  <location>Test radio - patchbox</location>
+  <admin>dan@localhost</admin>
+  <limits>
+    <clients>20</clients>
+    <sources>2</sources>
+    <threadpool>1</threadpool>
+    <queue-size>102400</queue-size>
+    <client-timeout>30</client-timeout>
+    <header-timeout>15</header-timeout>
+    <source-timeout>10</source-timeout>
+    <burst-on-connect>1</burst-on-connect>
+    <burst-size>65535</burst-size>
+  </limits>
+  <authentication>
+    <source-password>ZMIEN_TO_haslo_testowe</source-password>
+    <relay-password>ZMIEN_TO_haslo_testowe</relay-password>
+    <admin-user>admin</admin-user>
+    <admin-password>ZMIEN_TO_haslo_admina</admin-password>
+  </authentication>
+  <hostname>localhost</hostname>
+  <listen-socket>
+    <port>8001</port>
+  </listen-socket>
+  <fileserve>1</fileserve>
+  <paths>
+    <basedir>/usr/share/icecast2</basedir>
+    <webroot>/usr/share/icecast2/web</webroot>
+    <adminroot>/usr/share/icecast2/admin</adminroot>
+    <logdir>/home/dan/radio/log-test</logdir>
+    <pidfile>/home/dan/radio/icecast-test.pid</pidfile>
+    <alias source="/" destination="/status.xsl"/>
+  </paths>
+  <logging>
+    <accesslog>access-test.log</accesslog>
+    <errorlog>error-test.log</errorlog>
+    <loglevel>3</loglevel>
+  </logging>
+  <security>
+    <chroot>0</chroot>
+  </security>
+  <mount>
+    <mount-name>/test</mount-name>
+    <charset>UTF-8</charset>
+  </mount>
+</icecast>
