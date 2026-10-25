@@ -11,7 +11,7 @@ for i in $(seq 1 60); do
 done
 
 trap "kill 0" EXIT
-pd -nogui -rt -jack -jackname pd_radio -send "pd dsp 1" -path /home/dan/pd-scripts/TR8/garagebeat "$PATCH" &
+pd -nogui -rt -jack -jackname pd_radio -send "pd dsp 1" "$PATCH" &
 sleep 4
 ffmpeg -nostdin -loglevel warning -f jack -i pd_stream -acodec libmp3lame -ab 192k \
        -content_type audio/mpeg -f mp3 "$ICE" &

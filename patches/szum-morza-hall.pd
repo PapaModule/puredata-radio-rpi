@@ -1,7 +1,7 @@
 #N canvas 0 0 800 500 10;
 #X text 20 10 Szum morza + bas E2 111 BPM (mono) -> rev3~ hall;
 #X obj 40 50 noise~;
-#X obj 40 80 *~ 1.0;
+#X obj 40 80 *~ 0.5;
 #X obj 40 230 vcf~ 1000 0.9;
 #X obj 40 260 vcf~ 1000 0.9;
 #X obj 40 330 *~ 0.8;
