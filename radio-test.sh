@@ -22,11 +22,11 @@ case "$cmd" in
     # icecast testowy musi dzialac (usluga icecast-test)
     curl -s -o /dev/null localhost:8001/ || { echo "Icecast testowy nie dziala - systemctl --user start icecast-test"; exit 1; }
     echo "Pd: $PATCH (jackname $JN)"
-    pd -nogui -rt -jack -jackname "$JN" -send "pd dsp 1" "$PATCH" &
+    pd -nogui -rt -jack -jackname "$JN" -send "pd dsp 1" "$PATCH" >/tmp/radio-test-pd.log 2>&1 &
     echo $! > /tmp/radio-test-pd.pid
     sleep 4
     ffmpeg -nostdin -loglevel warning -f jack -i test_stream \
-           -acodec libmp3lame -ab 192k -content_type audio/mpeg -f mp3 "$TEST_URL" &
+           -acodec libmp3lame -ab 192k -content_type audio/mpeg -f mp3 "$TEST_URL" >/tmp/radio-test-ffmpeg.log 2>&1 &
     echo $! > /tmp/radio-test-ffmpeg.pid
     for i in $(seq 1 15); do
         jack_lsp 2>/dev/null | grep -qx test_stream:input_1 && break
