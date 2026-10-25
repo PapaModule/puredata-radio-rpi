@@ -10,6 +10,10 @@ for i in $(seq 1 60); do
     sleep 2
 done
 
+# Zabij Pd z tą samą nazwą JACK uruchomione poza usługą: inaczej nasze Pd dostaje
+# nazwę pd_radio-01, a jack_connect poniżej podłącza do streamu cudzą instancję
+pkill -f -- "-jackname pd_radio" 2>/dev/null && sleep 1
+
 trap "kill 0" EXIT
 pd -nogui -rt -jack -jackname pd_radio -send "pd dsp 1" "$PATCH" &
 sleep 4
