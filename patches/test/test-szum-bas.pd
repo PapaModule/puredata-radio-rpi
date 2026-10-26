@@ -82,7 +82,7 @@
 #X obj 480 540 + 1;
 #X obj 480 570 mod 16;
 #X obj 540 570 t f f;
-#X obj 540 600 sel 2 6 10 14;
+#X obj 540 600 sel 3 7 11 15;
 #X obj 540 630 t b;
 #X msg 540 660 1 0 \, 0 60;
 #X obj 540 690 vline~;
