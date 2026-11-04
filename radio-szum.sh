@@ -20,13 +20,17 @@ sleep 4
 ffmpeg -nostdin -loglevel warning -f jack -i pd_stream -acodec libmp3lame -ab 192k \
        -content_type audio/mpeg -f mp3 "$ICE" &
 
-for i in $(seq 1 15); do
-    jack_lsp | grep -qx pd_stream:input_1 && break
-    sleep 1
+# stereo: L i R z Pd do streamu. Ponawiaj do skutku: przy obciążonym Pi port
+# pd_stream potrafi pojawić się po kilku minutach (4.11.2026: 13 min), a jednorazowe
+# jack_connect zostawiało stream z ciszą aż do następnego restartu
+polaczone() { [ "$(jack_lsp -c pd_stream | grep -c 'pd_radio:output_')" = 2 ]; }
+for i in $(seq 1 300); do
+    jack_connect pd_radio:output_1 pd_stream:input_1 2>/dev/null
+    jack_connect pd_radio:output_2 pd_stream:input_2 2>/dev/null
+    polaczone && break
+    sleep 2
 done
-# stereo: L i R z Pd do streamu
-jack_connect pd_radio:output_1 pd_stream:input_1
-jack_connect pd_radio:output_2 pd_stream:input_2
+polaczone || { echo "Nie udało się podłączyć pd_radio do pd_stream (10 min)"; exit 1; }
 
 # Gdy padnie Pd albo ffmpeg, kończymy i systemd restartuje całość
 wait -n
