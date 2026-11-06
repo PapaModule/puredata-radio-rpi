@@ -52,6 +52,7 @@ Skrypt:
 ## Pliki
 
 - `radio-szum.sh` — skrypt startowy (systemd --user)
+- `radio-test.sh` + `systemd/radio-test.service` — tor testowy :8001/test (`radio-test.sh start <patch.pd>` zapisuje patch i restartuje usługę; po reboocie gra ostatni patch); instalacja: skopiuj unit do `~/.config/systemd/user/`, `systemctl --user enable radio-test`
 - `patches/szum-morza.pd` — oryginalny patch PD (szum morza, rev3~)
 - `patches/szum-morza-bas.pd` — **aktualny** patch radia (szum morza + bas, mikser, rev3~)
 - `patches/szum-morza-hall.pd` — eksperyment z `s-jonverb~`; nieużywany (GarageBeat nie działa w `-nogui`)

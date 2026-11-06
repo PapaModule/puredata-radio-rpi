@@ -1,0 +1,14 @@
+[Unit]
+Description=Radio TESTOWE - patch z ~/radio/.radio-test-patch na :8001/test
+After=icecast-test.service radio-szum.service
+Wants=icecast-test.service
+
+[Service]
+Type=simple
+ExecStart=/home/dan/radio/radio-test.sh run
+Restart=always
+RestartSec=10
+KillMode=control-group
+
+[Install]
+WantedBy=default.target
